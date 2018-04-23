@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  *@日期 2018年4月23日下午4:01:21
  *@作者 hsq54321@126.com
  */
-public class AAA {
+public class Ip {
 	
 	/**
 	 * 获取本地ip
