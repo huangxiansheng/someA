@@ -1,4 +1,4 @@
-package com.hs;
+package com.hs.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  *@日期 2018年4月23日下午4:01:21
  *@作者 hsq54321@126.com
  */
-public class Ip {
+public class IpUtil {
 	
 	/**
 	 * 获取本地ip
@@ -54,13 +54,8 @@ public class Ip {
 		if(m.find()){
 			String ipstr = m.group(0);
 			ip = ipstr;
-			System.out.println(ipstr);
 		}
 		return ip;
-	}
-	
-	public static void main(String[] args) {
-		getV4IP();
 	}
 	
 }
