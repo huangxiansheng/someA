@@ -23,13 +23,25 @@ public class IpUtil {
 		String ip = "";
 		String chinaz = "http://ip.chinaz.com/getip.aspx";//http://ip.chinaz.com
 		
+		StringBuilder inputLine = IpUtil.httpURLString(chinaz);
+		
+		Pattern p = Pattern.compile("[0-9]{0,3}\\.[0-9]{0,3}\\.[0-9]{0,3}\\.[0-9]{0,3}");
+		Matcher m = p.matcher(inputLine.toString());
+		if(m.find()){
+			String ipstr = m.group(0);
+			ip = ipstr;
+		}
+		return ip;
+	}
+	
+	public static StringBuilder httpURLString(String urlStr) {
 		StringBuilder inputLine = new StringBuilder();
 		String read = "";
 		URL url = null;
 		HttpURLConnection urlConnection = null;
 		BufferedReader in = null;
 		try {
-			url = new URL(chinaz);
+			url = new URL(urlStr);
 			urlConnection = (HttpURLConnection) url.openConnection();
 		    in = new BufferedReader( new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
 			while((read=in.readLine())!=null){
@@ -48,14 +60,7 @@ public class IpUtil {
 				}
 			}
 		}
-		
-		Pattern p = Pattern.compile("[0-9]{0,3}\\.[0-9]{0,3}\\.[0-9]{0,3}\\.[0-9]{0,3}");
-		Matcher m = p.matcher(inputLine.toString());
-		if(m.find()){
-			String ipstr = m.group(0);
-			ip = ipstr;
-		}
-		return ip;
+		return inputLine;
 	}
 	
 }
